@@ -1,0 +1,10 @@
+{
+  "poll_interval_seconds": 30,
+  "request_timeout_seconds": 5,
+  "services": [
+    {
+      "name": "Example local API",
+      "url": "http://127.0.0.1:8000/health"
+    }
+  ]
+}

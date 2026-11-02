@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10141d">
+    <title>Awesome LLM Apps | Endpoint Monitor</title>
+    <link rel="stylesheet" href="/app.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="layout">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AWESOME LLM APPS</p>
+          <h1>Endpoint monitor</h1>
+          <p class="subtitle">Live health checks for the apps you run.</p>
+        </div>
+        <div class="live-indicator" aria-live="polite">
+          <span class="pulse" aria-hidden="true"></span>
+          <span id="connection-state">Connecting</span>
+        </div>
+      </header>
+
+      <section class="summary-grid" aria-label="Monitoring summary">
+        <article class="summary-card">
+          <span class="summary-label">Overall status</span>
+          <strong id="overall-status" class="summary-value">Checking</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Healthy</span>
+          <strong id="healthy-count" class="summary-value">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Down</span>
+          <strong id="down-count" class="summary-value">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Monitored</span>
+          <strong id="total-count" class="summary-value">—</strong>
+        </article>
+      </section>
+
+      <section class="services-section" aria-labelledby="services-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="services-heading">Services</h2>
+            <p id="last-checked">Waiting for the first health check…</p>
+          </div>
+          <span class="refresh-note">Auto-refreshes every 2 seconds</span>
+        </div>
+        <div id="service-list" class="service-list" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <h3>No endpoints configured</h3>
+          <p>
+            Copy <code>monitoring/services.example.json</code> to
+            <code>monitoring/services.json</code>, add your app health URLs, and restart the monitor.
+          </p>
+        </div>
+        <p id="error-message" class="error-message" role="alert" hidden></p>
+      </section>
+
+      <footer>
+        <span>Checks use HTTP status codes: any 2xx response is healthy.</span>
+        <span id="uptime">Monitor uptime —</span>
+      </footer>
+    </main>
+  </body>
+</html>
